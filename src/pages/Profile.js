@@ -72,7 +72,7 @@ const Profile = () => {
       <section>
         <div className='profile_container'>
           <div className='img_container'>
-            <img src={user.avatar ? user.avatar : Img} alt='avatar' />
+            <img src={user.avatar || Img} alt='avatar' />
             <div className='overlay'>
               <div>
                 <label htmlFor='photo'>
