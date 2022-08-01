@@ -9,28 +9,40 @@ const Message = ({ msg, user1, chat }) => {
   }, [msg]);
 
   return (
-    <div className='box'>
-      {msg.from !== user1 && (
-        <img src={chat.avatar} alt='avatar' className='avatar' />
+    <div className='message'>
+      {msg.from !== user1 ? (
+        <>
+          <img src={chat.avatar} alt='avatar' className='avatar' />
+          <div className='message_wrapper' ref={scrollRef}>
+            <span>{chat.name}</span>
+            <div>
+              <p className='me'>
+                {msg.media && <img src={msg.media} alt={msg.text} />}
+                {msg.text}
+                <br />
+                <small>
+                  <Moment fromNow>{msg.createdAt.toDate()}</Moment>
+                </small>
+              </p>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className='message_wrapper own' ref={scrollRef}>
+            <div>
+              <p className='friend'>
+                {msg.media && <img src={msg.media} alt={msg.text} />}
+                {msg.text}
+                <br />
+                <small>
+                  <Moment fromNow>{msg.createdAt.toDate()}</Moment>
+                </small>
+              </p>
+            </div>
+          </div>
+        </>
       )}
-
-      <div
-        className={`message_wrapper ${msg.from === user1 ? 'own' : ''}`}
-        ref={scrollRef}
-      >
-        {msg.from !== user1 && <span>{chat.name}</span>}
-
-        <div>
-          <p className={msg.from === user1 ? 'me' : 'friend'}>
-            {msg.media && <img src={msg.media} alt={msg.text} />}
-            {msg.text}
-            <br />
-            <small>
-              <Moment fromNow>{msg.createdAt.toDate()}</Moment>
-            </small>
-          </p>
-        </div>
-      </div>
     </div>
   );
 };
