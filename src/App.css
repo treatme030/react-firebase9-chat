@@ -94,7 +94,6 @@ section .form {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 1px solid var(--color-4);
   transition: 0.5s ease-in-out all;
 }
 .img_container:hover img {
@@ -153,7 +152,6 @@ section .form {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 1px solid var(--color-4);
 }
 .user_status {
   width: 10px;
