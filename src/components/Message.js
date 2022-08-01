@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Moment from 'react-moment';
+import Img from '../images/default.jpeg';
 
 const Message = ({ msg, user1, chat }) => {
   const scrollRef = useRef();
@@ -12,11 +13,11 @@ const Message = ({ msg, user1, chat }) => {
     <div className='message'>
       {msg.from !== user1 ? (
         <>
-          <img src={chat.avatar} alt='avatar' className='avatar' />
+          <img src={chat.avatar || Img} alt='avatar' className='avatar' />
           <div className='message_wrapper' ref={scrollRef}>
             <span>{chat.name}</span>
             <div>
-              <p className='me'>
+              <p className='friend'>
                 {msg.media && <img src={msg.media} alt={msg.text} />}
                 {msg.text}
                 <br />
@@ -31,7 +32,7 @@ const Message = ({ msg, user1, chat }) => {
         <>
           <div className='message_wrapper own' ref={scrollRef}>
             <div>
-              <p className='friend'>
+              <p className='me'>
                 {msg.media && <img src={msg.media} alt={msg.text} />}
                 {msg.text}
                 <br />
